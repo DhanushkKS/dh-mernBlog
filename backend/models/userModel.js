@@ -12,17 +12,12 @@ const UserSchema = new Schema({
     password: {
         type: String,
         required: true,
-        unique: true
-    },
-    confirmPassword: {
-        type: String,
-        required: true,
-        unique: true
     }
+  
 })
 
-UserSchema.statics.Register = async function (email, password, confirmPassword) {
-    if (!email || !password || !confirmPassword) {
+UserSchema.statics.register = async function (email, password) {
+    if (!email || !password ) {
         throw Error("All fields must be filled")
     }
     if (!validator.isEmail(email)) {
@@ -32,9 +27,7 @@ UserSchema.statics.Register = async function (email, password, confirmPassword) 
     if (exists) {
         throw Error('Email alrady use')
     }
-    if (password !== confirmPassword) {
-        throw Error("Passwords doesn't match")
-    }
+   
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
     //create user
@@ -53,7 +46,7 @@ UserSchema.statics.Register = async function (email, password, confirmPassword) 
      */
 
 }
-UserSchema.statics.Login = async function (email, password) {
+UserSchema.statics.login = async function(email, password) {
     if (!email || !password) {
         throw Error("All fields must be filled in")
     }
@@ -68,7 +61,7 @@ UserSchema.statics.Login = async function (email, password) {
     if(!match){
         throw Error("Incorrect password")
     }
-    return user;
+    return user
     //mekath static method ekak
     /**
      * kalin wagem blnw email validda all fields filled da kiyala.
@@ -77,3 +70,5 @@ UserSchema.statics.Login = async function (email, password) {
      * e okkoma harinam userwa return karanwa.
      */
 }
+//anthimata modal eka export karanna
+module.exports = mongoose.model('User',UserSchema)

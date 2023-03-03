@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 body{
   color: #222;
 }
@@ -64,4 +67,31 @@ div.post div.image{
 .post .summary{
   margin: 10px 0;
   line-height: 1.5em;
+}
+/* Login and register forms */
+.login , .register{
+  max-width: 400px;
+  margin: auto;
+}
+input{
+  display: block;
+  margin-bottom:5px ;
+  width: 100%;
+  padding: 5px;
+  border: 0;
+  background-color: #ddd;
+  border-bottom: 1px solid #ccc;
+
+}
+button{
+  width: 100%;
+  display: block;
+  background-color: #555;
+  color: #fff;
+  padding: 5px;
+
+
+}
+form h1{
+  text-align: center ;
 }

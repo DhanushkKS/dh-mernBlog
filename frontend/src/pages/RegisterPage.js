@@ -4,6 +4,7 @@ const RegisterPage = () => {
             <h1>Register</h1>
             <input type="text" placeholder="username"/>
             <input type="password" name="" id="" placeholder="password" />
+            <input type="password" name="" id="" placeholder="confirm password" />
             <button>Register</button>
         </form>
     );

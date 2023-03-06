@@ -8,11 +8,12 @@
  * (5) router eka export karanna
  */
 const express = require('express');
-const { loginUser, registerUser } = require('../controllers/userController')
+const { loginUser, registerUser, getAllusers } = require('../controllers/userController')
 const router = express.Router();
 /** login */
 router.post('/login', loginUser);
 /**Register */
 router.post('/register', registerUser)
-
+/** get all users */
+router.get('/users',getAllusers)
 module.exports = router

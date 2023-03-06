@@ -42,8 +42,14 @@ const registerUser = async (req, res) => {
         res.status(400).json({ error:' registerUser '+ error.message })
     }
 }
+
+const getAllusers =async (req,res)=>{
+    const users = await User.find().sort({createdAt:-1});
+    res.status(200).json(users)
+}
 module.exports = {
     loginUser,
-    registerUser
+    registerUser,
+    getAllusers
 
 }

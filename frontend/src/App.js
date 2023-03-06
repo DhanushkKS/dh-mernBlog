@@ -9,7 +9,7 @@ import LoginPage from './pages/Login';
 import RegisterPage from './pages/RegisterPage';
 function App() {
   return (
-
+    
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Layout />}>

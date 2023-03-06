@@ -1,6 +1,8 @@
+import { useAuthContext } from '../hooks/useAuthContext';
 import img from './../img/raycast-untitled.png'
 
 const Post = () => {
+  // const {user} = useAuthContext()
   return (
     <div className="post">
       <div className="image">

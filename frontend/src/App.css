@@ -72,6 +72,7 @@ div.post div.image{
 .login , .register{
   max-width: 400px;
   margin: auto;
+  text-align: center;
 }
 input{
   display: block;
@@ -91,7 +92,4 @@ button{
   padding: 5px;
 
 
-}
-form h1{
-  text-align: center ;
 }

@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const cors = require('cors')
 const userRoutes = require('./routes/user');
-
+const blogPostRoutes = require('./routes/blogPost');
 const mongoose = require('mongoose');
 
 mongoose.set('strictQuery',false);
@@ -29,5 +29,6 @@ app.use((req,res,next)=>{
     next()
 })
 app.use('/api/user',userRoutes)
+app.use('/api/blog-post',blogPostRoutes)
 
 

@@ -1,5 +1,4 @@
 {
- 
   "name": "dh-mern-blog",
   "version": "0.1.0",
   "private": true,
@@ -10,6 +9,7 @@
     "axios": "^1.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-quill": "^2.0.0",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
     "uuid": "^9.0.0",

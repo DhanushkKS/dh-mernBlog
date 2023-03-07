@@ -19,6 +19,7 @@ const Header = () => {
         {user && (
           <div>
             <span>{user.email}</span>
+            <span><Link to='/create'>Create a new post</Link></span>
             <button onClick={handleClick}>Logout</button>
           </div>
 
@@ -26,7 +27,7 @@ const Header = () => {
         {!user && (
           <div>
             <Link to="/login">Login</Link>
-            <Link to="/register" >Register</Link>
+            {/* <Link to="/register" >Register</Link> */}
           </div>
         )}
 

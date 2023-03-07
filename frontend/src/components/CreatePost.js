@@ -26,13 +26,13 @@ const CreatePost = () => {
     const handleSubmit = (e)=>{
         e.preventDefault()
         console.log(files);
-        axios.post('http://localhost:5555/api/blog-post',)
+        axios.post('http://localhost:5555/api/blog-post/create-post',)
     }
     return ( 
-        <form action="" onSubmit={handleSubmit}>
+        <form action="" onSubmit={handleSubmit} enctype="multipart/form-data">
             <input type="text" name="" id="" placeholder="title" value={title} onChange={e=>setTitele( e.target.value)}/>
             <input type="text" placeholder="summary"  value={summary} onChange={e=>setSummary(e.target.value)} />
-            <input type="file" name="" id="" onChange={e=>setFiles(e.target.files)} multiple/>
+            <input type="file" name="cover" id="" onChange={e=>setFiles(e.target.files)} multiple/>
             <ReactQuill theme='snow' modules={modules} formats={formats} value={content} onChange={e=>setContent(e.target.value)}/>
             <button style={{marginTop:'5px'}}>Create post</button>
         </form>

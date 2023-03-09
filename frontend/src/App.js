@@ -1,7 +1,5 @@
 
 import './App.css'
-import Header from './components/Header';
-import Post from './components/Post';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Layout from './pages/Layout';
 import IndexPage from './pages/IndexPage';
@@ -10,7 +8,8 @@ import RegisterPage from './pages/RegisterPage';
 import CreatePost from './components/CreatePost';
 function App() {
   return (
-    
+    <div>
+
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Layout />}>
@@ -21,6 +20,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </div>
 
   );
 }

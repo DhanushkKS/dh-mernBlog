@@ -1,6 +1,6 @@
 import { createContext, useReducer } from "react";
 
-export const PostConext = createContext();
+export const PostContext = createContext();
 export const postReducer = (state,action)=>{
     switch(action.type){
         case 'SET_POSTS':
@@ -8,23 +8,25 @@ export const postReducer = (state,action)=>{
                 posts:action.payload
             
         }
-        case 'SET_SINGLE_POST':
+        // case 'SET_SINGLE_POST':
+        //     return{
+        //         posts:state.posts.filter((p)=>p._id==action.payload._id)
+        //     }
+        case 'CREATE_POST':
             return{
-                posts:state.posts.filter((p)=>p._id==action.payload._id)
-            }
-        case 'CREATE_POST','EDIT_POST':
-            return{
-                posts:[action.payload,...state.workouts]
+                posts:[action.payload,...state.posts]
             }
         default :
         return state
     }
 }
-export const PostContextProvider = ({childern})=>{
-    const [state,dispatch]  =useReducer(postReducer,{posts:null})
+export const PostContextProvider = ({children})=>{
+    const [state,dispatch]  =useReducer(postReducer,{
+        posts:[]
+    })
     return(
-        <PostConext.Provider value={{...state,dispatch}}>
-            {childern}
-        </PostConext.Provider>
-    );
+        <PostContext.Provider value={{...state,dispatch}}>
+            {children}
+        </PostContext.Provider>
+    )
 }

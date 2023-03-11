@@ -8,10 +8,11 @@ export const postReducer = (state,action)=>{
                 posts:action.payload
             
         }
-        // case 'SET_SINGLE_POST':
-        //     return{
-        //         posts:state.posts.filter((p)=>p._id==action.payload._id)
-        //     }
+         case 'SET_SINGLE_POST':
+             return{
+                    post:action.payload,
+                 
+             }
         case 'CREATE_POST':
             return{
                 posts:[action.payload,...state.posts]

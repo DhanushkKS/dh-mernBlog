@@ -3,14 +3,21 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' })
 const fs = require('fs');
-/**get all posts */
+
+
+/**get all posts 
+ * endpoint : 'api/blog-post/posts
+*/
 const getAllPosts = async (req, res) => {
     const posts = await Post.find({}).sort({ createdAt: -1 })
-    res.status(200).json(posts)
+    res.status(200).json(posts) 
 }
-/** get single post */
+
+/** get single post 
+ * Endpoint : api/blog-post/posts/:id
+*/
 const getSinglePost = async (req, res) => {
-    const { id } = rew.params;
+    const { id } = req.params;
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({ error: 'no such post,invalid post id' })
     }
@@ -41,8 +48,13 @@ const createPost = async (req, res) => {
 
 
 
+
 /** update post */
 /** delete post */
 module.exports = {
-    createPost
+    createPost,
+    getAllPosts,
+    getSinglePost,
+    
+
 }

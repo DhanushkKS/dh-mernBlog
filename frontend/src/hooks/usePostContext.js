@@ -7,3 +7,5 @@ export const usePostContext =()=>{
         throw Error("usePostContext must be used in authContext Provider")
     }return context
 }
+
+

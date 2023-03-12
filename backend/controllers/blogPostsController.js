@@ -27,6 +27,7 @@ const getSinglePost = async (req, res) => {
     }
     res.status(200).json(post)
 }
+
 /** createPost */
 const createPost = async (req, res) => {
     const { title, summary, content } = req.body;
@@ -50,11 +51,42 @@ const createPost = async (req, res) => {
 
 
 /** update post */
+const updatePost = async(req,res)=>{
+    const {id} = req.params;
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error:'No such post'})
+        
+    }
+    const post = await Post.findByIdAndUpdate({_id:id},{...req.body})
+       
+    if(!post){
+        return res.status(404).json({error:'No such post'})
+
+    }
+    res.status(200).json(post)
+}
+const deletePost =async (req,res)=>{
+    const {id} = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: 'no such post,invalid post id' })
+    }
+   const post =  await Post.findByIdAndDelete({_id:id})
+    if(!post){
+        return res.status(400).json({error:'No such post'})
+    }
+    res.status(200).json({msg:`deleted post ${id}`})
+
+}
+
+
+
 /** delete post */
 module.exports = {
     createPost,
     getAllPosts,
     getSinglePost,
-    
+    updatePost,
+    deletePost
+
 
 }

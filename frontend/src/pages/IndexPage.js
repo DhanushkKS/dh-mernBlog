@@ -24,7 +24,7 @@ const IndexPage = () => {
             })  
         }
         fetchPosts()
-    },[dispatch])
+    },[])
     return posts.length ? ( 
         /**dan
          * 

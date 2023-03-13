@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useParams,Link } from "react-router-dom";
 import { usePostContext } from "../hooks/usePostContext";
 import DeletePostButton from "./DeletePostButton";
+import UpdatePostButton from "./UpdatePostButton";
 
 const MainPost = () => {
     const { id } = useParams()
@@ -31,6 +32,7 @@ const MainPost = () => {
             <div className="image">
               <img src={coverImgUrl} alt="blog_img" />
               <DeletePostButton _id = {post._id}/>
+              
             </div>
             <div className="texts">
               <h2>{post.title}</h2>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
 import {useCreatePost} from '../hooks/useCreatePost'
-const CreatePost = () => {
+const CreatePost = ({postt}) => {
     const [title,setTitele] = useState('')
     const [summary,setSummary] = useState('')
     const [content,setContent] = useState('')

@@ -57,13 +57,25 @@ const updatePost = async(req,res)=>{
         return res.status(404).json({error:'No such post'})
         
     }
-    const post = await Post.findByIdAndUpdate({_id:id},{...req.body})
-       
-    if(!post){
+    try {
+        const {title,summary,content} = req.body
+        const { originalname ,path} = req.file;
+        const parts = originalname.split('.');
+        const ext = parts[parts.length - 1]
+        const newPath = path+'.'+ext;
+        fs.renameSync(path,newPath)
+        const post = await Post.findByIdAndUpdate({_id:id},{...req.body,cover:newPath})
+         if(!post){
         return res.status(404).json({error:'No such post'})
 
     }
     res.status(200).json(post)
+    } catch (error) {
+        
+    }
+    
+       
+   
 }
 const deletePost =async (req,res)=>{
     const {id} = req.params;

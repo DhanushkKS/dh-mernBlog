@@ -23,7 +23,7 @@ router.get('/posts', getAllPosts)
 router.get('/posts/:id', getSinglePost)
 
 /**Update post */
-router.patch('/posts/:id', updatePost)
+router.patch('/posts/:id',upload.single('cover'), updatePost)
 
 /**delete post */
 router.delete('/posts/:id', deletePost)

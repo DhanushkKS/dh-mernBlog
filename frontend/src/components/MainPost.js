@@ -32,7 +32,8 @@ const MainPost = () => {
             <div className="image">
               <img src={coverImgUrl} alt="blog_img" />
               <DeletePostButton _id = {post._id}/>
-              
+              <Link to={`/posts/edit/${post._id}`}>Edit post</Link>
+              {/* <Link to = {{pathname:'/posts/edit/'+post._id, state:{post}}}>Edit post</Link> */}
             </div>
             <div className="texts">
               <h2>{post.title}</h2>

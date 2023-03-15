@@ -21,5 +21,12 @@ export const useCreatePost = ()=>{
 
         })
     }
-    return{createPost}
+    const updatePost = async(data,id)=>{
+        await axios.patch('http://localhost:5555/api/blog-post/posts/'+id,data,{headers:{'Content-Type':'applcation/json'}}).then(res=>{
+            dispatch({type:'CREATE_POST',payload:res.data})    
+        console.log("update success post "+ id);
+
+        }).catch (err=>{console.log("some err happened with post update, "+ err.message);})
+    }
+    return{createPost,updatePost}
 }

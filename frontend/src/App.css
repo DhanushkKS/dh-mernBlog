@@ -54,7 +54,7 @@ div.post div.image{
 .post .info{
 
   margin:6px 0;
-  color: #888;
+  color: #0e0707;
   font-size: .7rem;
   font-weight: bold;
   display: flex;
@@ -67,6 +67,8 @@ div.post div.image{
 .post .summary{
   margin: 10px 0;
   line-height: 1.5em;
+  font-size: 1.1rem;
+  font-style: italic;
 }
 /* Login and register forms */
 .login , .register{

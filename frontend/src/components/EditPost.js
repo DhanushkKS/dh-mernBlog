@@ -2,16 +2,16 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
-import { useLocation, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {useCreatePost} from '../hooks/useCreatePost'
 const EditPost = () => {
   const {id} = useParams()
-   
+   const navigate = useNavigate()
     const [title,setTitele] = useState('')
     const [summary,setSummary] = useState('')
     const [content,setContent] = useState('')
     const [files,setFiles] = useState('')
-    const {createPost,updatePost} = useCreatePost();
+    const {updatePost} = useCreatePost();
     const modules = {
         toolbar: [
           [{ 'header': [1, 2, false] }],
@@ -36,7 +36,7 @@ useEffect(()=>{
     setContent(responce.content)
   })
   .catch(e=>{console.log(e.message)})
-},[])
+},[id])
     const handleSubmit =async (e)=>{
         e.preventDefault()
         const data = new FormData()
@@ -46,6 +46,8 @@ useEffect(()=>{
          data.set('cover',files[0])
     
       await updatePost(data,id)
+      navigate('/')
+     
     }
     return ( 
         <form action="" onSubmit={handleSubmit} enctype="multipart/form-data">

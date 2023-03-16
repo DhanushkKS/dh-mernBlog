@@ -2,6 +2,7 @@ import { createContext, useReducer } from "react";
 
 export const PostContext = createContext();
 export const postReducer = (state,action)=>{
+   
     switch(action.type){
         case 'SET_POSTS':
             return{
@@ -23,12 +24,12 @@ export const postReducer = (state,action)=>{
             posts: state.posts.filter((p)=>p._id !== action.payload._id)
         }
         default :
-        return state
+        return state;
     }
 }
 export const PostContextProvider = ({children})=>{
     const [state,dispatch]  =useReducer(postReducer,{
-       posts:[]
+       posts:[],post:null
     })
     return(
         <PostContext.Provider value={{...state,dispatch}}>

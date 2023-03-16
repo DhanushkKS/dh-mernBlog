@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams,useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
 import {useCreatePost} from '../hooks/useCreatePost'
-const CreatePost = () => {
-  const location  = useLocation()
-  const titlee = new URLSearchParams(location.search).get("titlee");
-  const contentt = new URLSearchParams(location.search).get("contentt");
-  const summaryy = new URLSearchParams(location.search).get("summaryy");
 
+const CreatePost = () => {
+  const {user} = useAuthContext()
+  const navigate = useNavigate();
+  const location  = useLocation()
+  
   const myProp = location.state && location.state.post;
     console.log("post ",myProp);
     const [title,setTitele] = useState('')
@@ -31,11 +32,7 @@ const CreatePost = () => {
         'list', 'bullet', 'indent',
         'link', 'image'
       ]
-useEffect(()=>{
-  setTitele(titlee)
-  setContent(contentt)
-  setSummary(summaryy)
-},[])
+
     const handleSubmit =async (e)=>{
         e.preventDefault()
         const data = new FormData()
@@ -45,7 +42,15 @@ useEffect(()=>{
          data.set('cover',files[0])
     
       await createPost(data)
+      navigate('/')
     }
+    useEffect(() => {
+      console.log("first ",user);
+    
+      
+      
+    }, [])
+    
     return ( 
         <form action="" onSubmit={handleSubmit} enctype="multipart/form-data">
             <input type="text" name="" id="" placeholder={`title`} is value={title} onChange={e=>setTitele( e.target.value)}/>

@@ -3,8 +3,10 @@ import { useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
 import { useNavigate, useParams } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
 import {useCreatePost} from '../hooks/useCreatePost'
 const EditPost = () => {
+  const {user} = useAuthContext()
   const {id} = useParams()
    const navigate = useNavigate()
     const [title,setTitele] = useState('')
@@ -28,7 +30,13 @@ const EditPost = () => {
         'link', 'image'
       ]
 useEffect(()=>{
-  axios.get('http://localhost:5555/api/blog-post/posts/'+id).then(r=>{
+  axios.get('http://localhost:5555/api/blog-post/posts/'+id,
+  {
+    headers:{
+      'Authorization':   `Bearer ${user.token}`
+    }
+  }
+  ).then(r=>{
     console.log(r.data);
     const responce = r.data
     setTitele(responce.title)
@@ -36,7 +44,8 @@ useEffect(()=>{
     setContent(responce.content)
   })
   .catch(e=>{console.log(e.message)})
-},[id])
+},[id,user])
+
     const handleSubmit =async (e)=>{
         e.preventDefault()
         const data = new FormData()

@@ -13,6 +13,10 @@ const PostSchema = new Schema({
     },
     cover:{
         type:String
+    },
+    user_id:{
+        type : String,
+        required :true
     }
 },{timestamps:true})
 module.exports = mongoose.model('Post',PostSchema)

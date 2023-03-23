@@ -11,6 +11,7 @@ const fs = require('fs');
 const getAllPosts = async (req, res) => {
     const posts = await Post.find({}).sort({ createdAt: -1 })
     res.status(200).json(posts) 
+   console.log(req.user._id);
 }
 
 /** get single post 
@@ -31,7 +32,7 @@ const getSinglePost = async (req, res) => {
 /** createPost */
 const createPost = async (req, res) => {
     const { title, summary, content } = req.body;
-    
+    const user_id = req.user._id;
     try {
         //  res.status(200).json(post)
         const { originalname ,path} = req.file;
@@ -40,7 +41,8 @@ const createPost = async (req, res) => {
         const newPath = path+'.'+ext;
         fs.renameSync(path,newPath)
       
-        const post = await Post.create({ title, summary, content, cover:newPath })
+        
+        const post = await Post.create({ title, summary, content, cover:newPath,user_id })
         res.json(post);
     } catch (error) {
         res.status(400).json({ error: error.message, msg: 'error happened in creating post in backend' })

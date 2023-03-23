@@ -3,13 +3,18 @@ import { Link } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import img from './../img/raycast-untitled.png'
 import DeletePostButton from './DeletePostButton';
+import jwt_decode from "jwt-decode"
 
 const Post = ({post}) => {
+  const {user} = useAuthContext()
   // const {user} = useAuthContext()
   const url = post.cover
   const urlParts = url.split('\\');
   const fileName = urlParts[urlParts.length-1];
 
+  const token = user.token
+    const deco = jwt_decode(token)
+        console.log('decoded token is ',deco._id);
   /**
    * double click edit
    */
@@ -28,9 +33,12 @@ const Post = ({post}) => {
           <time>2023-03-03 08.00</time>
         </p>
         <p className="summary">{post.summary}</p>
-        <Link to ={`/posts/${post._id}`} >See more ....</Link>
+        <Link to ={`/posts/${post._id}`} >See more ...</Link>
       </div>
-      <DeletePostButton _id ={post._id} />
+      {
+        (post.user_id===deco._id)?<DeletePostButton _id ={post._id} />:''
+      }
+      
       
     </div>
   );

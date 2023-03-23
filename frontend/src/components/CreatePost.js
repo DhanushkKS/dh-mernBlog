@@ -6,9 +6,9 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import {useCreatePost} from '../hooks/useCreatePost'
 
 const CreatePost = () => {
-  const {user} = useAuthContext()
+  const {user} = useAuthContext();
   const navigate = useNavigate();
-  const location  = useLocation()
+  const location  = useLocation();
   
   const myProp = location.state && location.state.post;
     console.log("post ",myProp);
@@ -35,6 +35,9 @@ const CreatePost = () => {
 
     const handleSubmit =async (e)=>{
         e.preventDefault()
+        if(user.token===null){
+        console.log('you must be logged in');
+      }
         const data = new FormData()
          data.set('title',title)
          data.set('summary',summary)
@@ -42,14 +45,17 @@ const CreatePost = () => {
          data.set('cover',files[0])
     
       await createPost(data)
+      
       navigate('/')
     }
     useEffect(() => {
       console.log("first ",user);
-    
+      if(!user){
+        alert("you must be logged in to create a post")
+      }
       
       
-    }, [])
+    }, [user])
     
     return ( 
         <form action="" onSubmit={handleSubmit} enctype="multipart/form-data">

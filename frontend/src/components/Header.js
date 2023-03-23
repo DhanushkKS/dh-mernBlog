@@ -2,15 +2,18 @@
  * user kenek pennanawanam/innwnam logout button eka pennana
  * ehma nattam user variable eka null nam, login,regiser link deka pennanna.
  */
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogOut } from "../hooks/useLogout";
 
 const Header = () => {
   const { user } = useAuthContext();
   const {logout} = useLogOut()
+  const navigate = useNavigate()
   const handleClick = (e)=>{
     logout()
+    navigate('/')
+    window.location.reload(false)
   }
   return (
     <header>

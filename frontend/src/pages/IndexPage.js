@@ -8,13 +8,21 @@ import axios from "axios";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Post from "../components/Post";
+import { useAuthContext } from "../hooks/useAuthContext";
 import { usePostContext } from "../hooks/usePostContext";
+const IndexPage = () =>{
 
-const IndexPage = () => {
+    const {user} = useAuthContext()
     const {posts,dispatch} = usePostContext()
+   
     useEffect(()=>{
+          
         const fetchPosts = async()=>{
-            await axios.get('http://localhost:5555/api/blog-post/posts')
+            await axios.get('http://localhost:5555/api/blog-post/posts',{
+                headers:{
+                    'Authorization':   `Bearer ${user.token}`
+                  }
+            })
             .then(responce=>{
                 console.log('po sts', responce.data);
                  dispatch({type:'SET_POSTS',payload:responce.data})
@@ -23,8 +31,12 @@ const IndexPage = () => {
                 console.log('error happened in get all posts _by dhaushka',error.message);
             })  
         }
+        if(user){
+            fetchPosts()
+
+        }
         fetchPosts()
-    },[])
+    },[dispatch,user])
     return posts.length ? ( 
         /**dan
          * 

@@ -12,7 +12,8 @@ export const useCreatePost = ()=>{
     const {dispatch} = usePostContext()
     const {user} = useAuthContext()
     const createPost= async(data)=>{
-        await axios.post('http://localhost:5555/api/blog-post/create-post',data,{
+ 
+             await axios.post('http://localhost:5555/api/blog-post/create-post',data,{
             headers:{
                 'Content-Type':'applcation/json',
                 'Authorization':   `Bearer ${user.token}`
@@ -26,6 +27,8 @@ export const useCreatePost = ()=>{
             console.log('error in useCreatePost, log from dhanushka ',err);
 
         })
+       
+       
     }
     const updatePost = async(data,id)=>{
         await axios.patch('http://localhost:5555/api/blog-post/posts/'+id,data,{

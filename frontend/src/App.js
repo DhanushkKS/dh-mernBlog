@@ -8,6 +8,7 @@ import RegisterPage from './pages/RegisterPage';
 import CreatePost from './components/CreatePost';
 import MainPost from './components/MainPost';
 import EditPost from './components/EditPost';
+import UserProfile from './components/UserProfile';
 function App() {
   return (
     <div>
@@ -20,6 +21,7 @@ function App() {
           <Route path={'/posts/edit/:id'} element={<EditPost/>}/>
           <Route path={"/login"} element={<LoginPage />} />
           <Route path={'/register'} element={<RegisterPage />}/>
+          <Route path={'/user'} element={<UserProfile/>}/>
           <Route path={'/create'} element={<CreatePost/>}/>
         </Route>
       </Routes>

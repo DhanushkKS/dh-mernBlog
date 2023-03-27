@@ -29,7 +29,7 @@ const Post = ({post}) => {
       <div className="texts">
         <h2>{post.title}</h2>
         <p className="info">
-          <a href="#" className="author">{post.author_nickname}</a>
+          <Link to={'/user'} className="author" state={{author_id:post.user_id,nickname:post.author_nickname}} >{post.author_nickname}</Link>
           <time>2023-03-03 08.00</time>
         </p>
         <p className="summary">{post.summary}</p>

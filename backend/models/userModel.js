@@ -9,6 +9,10 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
+    nickname: {
+        type:String,
+        required: true,
+    },
     password: {
         type: String,
         required: true,
@@ -16,12 +20,12 @@ const UserSchema = new Schema({
   
 })
 
-UserSchema.statics.register = async function (email, password) {
+UserSchema.statics.register = async function (email,nickname, password) {
     if (!email || !password ) {
         throw Error("All fields must be filled")
     }
     if (!validator.isEmail(email)) {
-        throw Error("Emal isn;t valid")
+        throw Error("Emal isn't valid")
     }
     const exists = await this.findOne({ email })
     if (exists) {
@@ -31,7 +35,7 @@ UserSchema.statics.register = async function (email, password) {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
     //create user
-    const user = await this.create({ email, password: hash })
+    const user = await this.create({ email,nickname, password: hash })
     return user
     //static method ekak
     /**

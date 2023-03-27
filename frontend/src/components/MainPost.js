@@ -61,7 +61,7 @@ const MainPost = () => {
             <div className="texts">
               <h2>{post.title}</h2>
               <p className="info">
-                <a href="#" className="author">Dhanushka</a>
+                <a href="#" className="author">{post.author_nickname}</a>
                 <time>2023-03-03 08.00</time>
               </p>
               <div dangerouslySetInnerHTML={{__html:post.content}}/>

@@ -14,7 +14,7 @@ const Post = ({post}) => {
 
   const token = user.token
     const deco = jwt_decode(token)
-        console.log('decoded token is ',deco._id);
+     console.log("post is", post);
   /**
    * double click edit
    */
@@ -29,7 +29,7 @@ const Post = ({post}) => {
       <div className="texts">
         <h2>{post.title}</h2>
         <p className="info">
-          <a href="#" className="author">Dhanushka</a>
+          <a href="#" className="author">{post.author_nickname}</a>
           <time>2023-03-03 08.00</time>
         </p>
         <p className="summary">{post.summary}</p>

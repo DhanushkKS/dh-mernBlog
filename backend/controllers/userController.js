@@ -9,6 +9,7 @@
  * token eka hadanna // createtoken
  * responce eka yawanna email ekai token ekai
  * nattam catch karanna error ekak yawanna
+ * 
  */
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken');
@@ -28,12 +29,12 @@ const loginUser = async (req, res) => {
     /**Register user */
 }
 const registerUser = async (req, res) => {
-    const { email, password ,confirmPassword} = req.body
+    const { email,nickname, password ,confirmPassword} = req.body
     try {
         if(password===confirmPassword){
-            const user = await User.register(email, password)
+            const user = await User.register(email,nickname, password)
         const token = createToken(user._id)
-        res.status(200).json({email, token})
+        res.status(200).json({email,nickname, token})
         }else{
             throw Error("passwords doesn't maxtch")
         }

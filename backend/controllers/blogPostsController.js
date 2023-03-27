@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' })
 const fs = require('fs');
+const User = require('../models/userModel');
+const { json } = require('express');
 
 
 /**get all posts 
@@ -33,6 +35,11 @@ const getSinglePost = async (req, res) => {
 const createPost = async (req, res) => {
     const { title, summary, content } = req.body;
     const user_id = req.user._id;
+    //const nickname = await User.findOne(user_id,{nickname:1}).select('nickname')
+    const jsonNickname = JSON.stringify(await User.findOne(user_id,{nickname:1}).select('nickname'))
+    const NickName = JSON.parse(jsonNickname)
+    const author_nickname = NickName.nickname
+    console.log(author_nickname);
     try {
         //  res.status(200).json(post)
         const { originalname ,path} = req.file;
@@ -42,7 +49,7 @@ const createPost = async (req, res) => {
         fs.renameSync(path,newPath)
       
         
-        const post = await Post.create({ title, summary, content, cover:newPath,user_id })
+        const post = await Post.create({ title, summary, content, cover:newPath,user_id,author_nickname })
         res.json(post);
     } catch (error) {
         res.status(400).json({ error: error.message, msg: 'error happened in creating post in backend' })

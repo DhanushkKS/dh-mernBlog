@@ -16,15 +16,15 @@ export const useRegister = ()=>{
     const [error,setError] = useState(null)
     const [isloading,setIsLoading]=useState(null)
     const {dispatch} = useAuthContext();
-    const register = async (email,password,confirmPassword)=>{
-       await axios.post('http://localhost:5555/api/user/register',{email,password,confirmPassword},{
+    const register = async (email,nickname,password,confirmPassword)=>{
+       await axios.post('http://localhost:5555/api/user/register',{email,nickname,password,confirmPassword},{
             headers:{'Content-Type':'application/json'}
         }).
         then(responce=>{
 
            
             localStorage.setItem('blog-user',JSON.stringify(responce.data))
-            dispatch({type:'LOGIN',payload:responce.data})
+            dispatch({type:'REGISTER',payload:responce.data})
             setIsLoading(false);  
             console.log(responce)})
 

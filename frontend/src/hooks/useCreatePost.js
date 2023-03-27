@@ -32,7 +32,7 @@ export const useCreatePost = ()=>{
     }
     const updatePost = async(data,id)=>{
         await axios.patch('http://localhost:5555/api/blog-post/posts/'+id,data,{
-            headers:{'Content-Type':'applcation/json',
+            headers:{'Content-Type':'application/json',
             'Authorization':   `Bearer ${user.token}`
         
         }}).then(res=>{

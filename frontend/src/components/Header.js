@@ -5,11 +5,18 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogOut } from "../hooks/useLogout";
+import jwt_decode from "jwt-decode"
+
 
 const Header = () => {
+
   const { user } = useAuthContext();
   const {logout} = useLogOut()
   const navigate = useNavigate()
+
+  // const tokenn = user.token
+  // const deco = jwt_decode(tokenn)
+
   const handleClick = (e)=>{
     logout()
     navigate('/')
@@ -21,7 +28,7 @@ const Header = () => {
       <nav>
         {user && (
           <div>
-            <span>{user.email}</span>
+            <span> <Link to={'/user'} state={{author_id:'deco'._id,nickname:user.nickname}}>  welcome {user.nickname} &nbsp;</Link></span>
             <span><Link to='/create'>Create a new post</Link></span>
             <button onClick={handleClick}>Logout</button>
           </div>

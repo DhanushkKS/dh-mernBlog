@@ -24,7 +24,7 @@ const requireAuth = async(req,res,next)=>{
     const token = authorization.split(' ')[1]
     try {
         const {_id} = jwt.verify(token,process.env.SECRET)
-        req.user =await User.findOne({_id}).select('_id')
+        req.user =await User.findOne({_id}).select('_id') //authrz header eken ena tokn eeka decode karala id eka aran e adala id eken inna user wa gannawa user variale ekata 
         next()
     } catch (error) {
         console.log("error happened in requireAuth Middleware",error);

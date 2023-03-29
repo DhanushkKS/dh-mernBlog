@@ -22,24 +22,31 @@ const Header = () => {
     navigate('/')
     window.location.reload(false)
   }
+  console.log("nickname,", user?.nickname);
   return (
     <header>
       <Link to="/" className="logo">My Blog</Link>
       <nav>
-        {user && (
-          <div>
-            <span> <Link to={'/user'} state={{author_id:'deco'._id,nickname:user.nickname}}>  welcome {user.nickname} &nbsp;</Link></span>
-            <span><Link to='/create'>Create a new post</Link></span>
-            <button onClick={handleClick}>Logout</button>
-          </div>
+        <ul className="navigation active">
 
-        )}
+        {user && (
+          <>
+            <li> <Link to={'/user'} state={{author_id:'deco'._id,nickname:user.nickname}}>  welcome {user.nickname} &nbsp;</Link></li>
+            <li><Link to='/create'>Create a new post</Link></li>
+            <li>
+               <button onClick={handleClick}>Logout</button>
+            </li>
+          </>
+          
+
+)}
         {!user && (
-          <div>
+          <li>
             <Link to="/login">Login</Link>
             {/* <Link to="/register" >Register</Link> */}
-          </div>
+          </li>
         )}
+        </ul>
 
       </nav>
     </header>

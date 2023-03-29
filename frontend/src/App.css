@@ -1,12 +1,19 @@
+:root{
+  --color1 : #BCE1FC;
+  --color2 : #3482B3;
+  --color3 : #0E4C71;
+  --color4 : #1D242C;
+}
 *{
   box-sizing: border-box;
+  
 }
 body{
-  color: #222;
+  color:var(--color1);
 }
 main{
   padding: 10px;
-  max-width: 700px;
+  max-width: 100vw;
   margin: 0 auto;
 }
 
@@ -16,6 +23,8 @@ header{
   margin-bottom: 50px;
   align-items: center;
   margin-top: 20px;
+  background:linear-gradient(135deg,#0E4C71,#3482B3);
+
 }
 header a{
   text-decoration: none;
@@ -28,8 +37,119 @@ header a.logo{
 }
 header nav{
   display: flex;
-  gap: 15px;
+            /* min-height: 40vh; */
+            justify-content: center;
+            align-items: center;
+            /* background:linear-gradient(135deg,#0E4C71,#3482B3); */
 }
+/*
+####
+*/
+
+.navigation{
+  position: relative;
+  margin-top: 20px;
+  width:60px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 60px;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+}
+.navigation.active{
+  width: 600px;
+
+
+}
+.navigation .toggleMenu{
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: #BCE1FC;
+  border-radius: 50%;
+  transition: 0.5s;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.navigation.active .toggleMenu{
+  background: #3482B3;
+  transition-delay: 0s;
+  transform: translateY(60px);
+  width: 30px;
+  height: 30px;
+}
+.navigation .toggleMenu::before{
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  border-radius: 3px;
+  background: #0E4C71;
+  transform: translateY(-5px);
+  transition: 0.5s;
+  transition-delay: 0.5s;
+
+}.navigation .toggleMenu::after{
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  border-radius: 3px;
+  background: #0E4C71;
+  transform: translateY(5px);
+  transition: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.navigation.active .toggleMenu::before{
+  transition-delay: 0s;
+  background: #BCE1FC;
+  transform: translateY(0) rotate(45deg) scale(0.6);
+  transition: 0.5s;
+
+}.navigation.active .toggleMenu::after{
+ transition-delay: 0s;
+  background: #BCE1FC;
+  transform: translateY(0) rotate(-45deg) scale(0.6);
+  transition: 0.5s;
+  
+}
+.navigation li{
+  list-style: none;
+  transition: 0.5s;
+  transform: scale(0);
+
+}
+
+.navigation.active li{
+  transition-delay: 0.75s;
+  display: flex;
+  transform: scale(1);
+}
+.navigation li a{
+  text-decoration: none;
+  color: #0E4C71;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 5px 15px;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+.navigation li a:hover{
+  background:#0E4C71 ;
+  color: #BCE1FC;
+}
+
+/*
+#####
+*/
 img{
   max-width: 100%;
 }

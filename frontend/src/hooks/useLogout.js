@@ -5,7 +5,7 @@ export const useLogOut = ()=>{
     const {dispatch} = useAuthContext() //cnst dispatch = useContext(AuthContext) auth context eka use krnkot thama dispatch eka ganne create lrn kot newei
     const logout = ()=>{
         //remove user from local storage
-        localStorage.removeItem('blog-user')
+        localStorage.removeItem('user')
         //dispatch logout action
         dispatch({type:'LOGOUT'})
     }

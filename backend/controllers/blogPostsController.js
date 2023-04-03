@@ -13,7 +13,7 @@ const { json } = require('express');
 const getAllPosts = async (req, res) => {
     const posts = await Post.find({}).sort({ createdAt: -1 })
     res.status(200).json(posts) 
-   console.log(req.user._id);
+//    console.log(req);
 }
 
 /** get single post 
@@ -29,6 +29,7 @@ const getSinglePost = async (req, res) => {
         return res.status(404).json({ error: 'No post found' })
     }
     res.status(200).json(post)
+    console.log('single post request',req);
 }
 
 /** createPost */

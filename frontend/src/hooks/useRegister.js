@@ -23,8 +23,8 @@ export const useRegister = ()=>{
         then(responce=>{
 
            
-            localStorage.setItem('blog-user',JSON.stringify(responce.data))
-            dispatch({type:'REGISTER',payload:responce.data})
+            localStorage.setItem('user',JSON.stringify(responce.data))
+            dispatch({type:'LOGIN',payload:responce.data})
             setIsLoading(false);  
             console.log(responce)})
 

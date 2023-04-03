@@ -25,7 +25,7 @@ const DeletePostButton = (props) => {
           
     }
     return (  
-        <div>
+        <div className="deletepost">
           <button onClick={deletePost}>Delete post</button>  
         </div>
     );

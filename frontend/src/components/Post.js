@@ -27,7 +27,8 @@ const Post = ({post}) => {
         <img src={coverImgUrl} alt="blog_img" />
       </div> 
       <div className="texts">
-        <h2>{post.title}</h2>
+        {/* <h2>{post.title}</h2> */}
+        <h2><Link to ={`/posts/${post._id}`} >{post.title}</Link></h2>
         <p className="info">
           <Link to={'/user'} className="author" state={{author_id:post.user_id,nickname:post.author_nickname}} >{post.author_nickname}</Link>
           <time>2023-03-03 08.00</time>

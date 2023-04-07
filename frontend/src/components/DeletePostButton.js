@@ -26,7 +26,7 @@ const DeletePostButton = (props) => {
     }
     return (  
         <div className="deletepost">
-          <button onClick={deletePost}>Delete post</button>  
+          <button onClick={deletePost}title="Delete post"><ion-icon name="trash-outline" size="large"></ion-icon></button>  
         </div>
     );
 }

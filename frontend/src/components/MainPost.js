@@ -58,7 +58,7 @@ const MainPost = () => {
                 
                 <div className="editpost">
                   <DeletePostButton _id = {post._id}/>
-                   <Link to={`/posts/edit/${post._id}`}>Edit post</Link>
+                   <Link to={`/posts/edit/${post._id}`}><ion-icon name="create-outline" size="large"></ion-icon></Link>
                   </div>
                   :''
                 }
@@ -68,7 +68,7 @@ const MainPost = () => {
                 <a href="#" className="author">{post.author_nickname}</a>
                 <time>2023-03-03 08.00</time>
               </p>
-              <div dangerouslySetInnerHTML={{__html:post.content}}/>
+              <div dangerouslySetInnerHTML={{__html:post.content}} className="mainpost-content"/>
               
             </div>
           </div>

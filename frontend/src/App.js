@@ -11,22 +11,25 @@ import EditPost from './components/EditPost';
 import UserProfile from './components/UserProfile';
 function App() {
   return (
-    <div>
+    <>
+      <div className='background'></div>
+      <div >
 
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<IndexPage />} />
-          <Route path={'/posts/:id'} element={<MainPost/>}/>
-          <Route path={'/posts/edit/:id'} element={<EditPost/>}/>
-          <Route path={"/login"} element={<LoginPage />} />
-          <Route path={'/register'} element={<RegisterPage />}/>
-          <Route path={'/user'} element={<UserProfile/>}/>
-          <Route path={'/create'} element={<CreatePost/>}/>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-    </div>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Layout />}>
+              <Route index element={<IndexPage />} />
+              <Route path={'/posts/:id'} element={<MainPost />} />
+              <Route path={'/posts/edit/:id'} element={<EditPost />} />
+              <Route path={"/login"} element={<LoginPage />} />
+              <Route path={'/register'} element={<RegisterPage />} />
+              <Route path={'/user'} element={<UserProfile />} />
+              <Route path={'/create'} element={<CreatePost />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </>
 
   );
 }

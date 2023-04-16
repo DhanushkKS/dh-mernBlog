@@ -10,11 +10,133 @@ import { Link } from "react-router-dom";
 import Post from "../components/Post";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { usePostContext } from "../hooks/usePostContext";
+import styled, { css, keyframes } from 'styled-components'
 const IndexPage = () =>{
 
     const {user} = useAuthContext()
     const {posts,dispatch} = usePostContext()
-   
+    
+    // const BackgroundCircles = ({ count }) => {
+        
+    //    const animations = [];
+    //    for (let index = 0; index < count;index++) {
+    //     animations[index] = index+Math.floor(Math.random()*100);
+        
+    //    }
+    //    const circls= animations.map((animationValue)=>{
+    //     const trr = animationValue
+    //     const animate = keyframes
+    //     0%,100%{
+    //     transform: translateY(${trr});
+    //      }
+    //      50%{
+    //      transform: translateY(${trr});
+    //       }
+    //     `
+    //     return animate
+    //    })
+
+    //     const circles = Array.from({ length: count }, (_, index) => (
+        
+    //         <span key={index} className="background-circle"
+    //       style={{
+    //         position: 'absolute',
+    //         width: `3px`,
+    //         height: `3px`,  
+    //          borderRadius: `50%`,
+    //          background: `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`,
+    //          background:`linear-gradient(
+    //               ${Math.floor(Math.random()*361)}deg ,
+    //               rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}) ,
+    //               rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})     
+    //               )`,
+                  
+    //          transform: `translate(${ Math.floor( Math.random()*1400)}px,${ Math.floor( Math.random()*1000)}px)`,
+    //          margin:'10px',
+    //         //  animation: `animate 10s linear infinite`,
+    //          animationDelay: `calc(-1s * var(--i))`
+    //       }}
+          
+    //       >
+           
+    //       </span>
+       
+    //     ));
+      
+    //     return <div class="background-circles"
+    //     style={{
+    //         maxWidth:'100vw',
+    //         overflow:'hidden'
+    //     }}
+        
+    //     >{circles}</div>;
+    //   };
+    const BackgroundCircle = styled.span`
+  position: fixed;
+  
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 10px;
+  background: linear-gradient(
+    ${props => Math.floor(Math.random() * 361)}deg,
+    rgb(${props => Math.floor(Math.random() * 256)}, ${props => Math.floor(Math.random() * 256)}, ${props => Math.floor(Math.random() * 256)}),
+    rgb(${props => Math.floor(Math.random() * 256)}, ${props => Math.floor(Math.random() * 256)}, ${props => Math.floor(Math.random() * 256)})
+  );
+ 
+  animation: ${props => props.animation } 30s linear infinite;
+  animation-delay: ${props => `calc(-1s * ${props.index}))`};
+`;
+    const BackgroundCircles = ({ count }) => {
+  const animations = [];
+  for (let index = 0; index < count; index++) {
+    animations[index] = index + Math.floor(Math.random() * 1000);
+  }
+  
+  const circls = animations.map((animationValue) => {
+    const trr = animationValue;
+    const animate = keyframes`
+        0%,100%{
+        transform: translateY(${trr}px);
+        
+         }
+         50%{
+         transform: translateY(${trr*1.4}px) ;
+          }
+        `;
+    // const anime = props=> css`
+    // ${animate}  ${props.animateLength}  linear infinite;
+    
+    // `
+    return animate
+
+  });
+
+  const circles = Array.from({ length: count }, (_, index) => (
+    <BackgroundCircle key={index} index={index} animation={circls[index]} style={{
+      
+        top: `${Math.floor(Math.random()*1000)}px`,
+        left:`${Math.floor(Math.random()*1440)}px`,
+        
+    }} />
+          
+
+  ));
+
+  return (
+    <div
+      className="background-circles"
+      style={{
+      
+        maxWidth: "100vw",
+        overflow: "hidden"
+      }}
+    >
+      {circles}
+    </div>
+  );
+};
+
     useEffect(()=>{
           
         const fetchPosts = async()=>{
@@ -42,11 +164,18 @@ const IndexPage = () =>{
          * 
          */
         <>
+       <BackgroundCircles count={10}/>
+      
+        
         <div className="posts">
            {
             posts && posts.map((post)=>{
                 return (
+                  <>
                     <Post key={post._id} post={post}/>
+                    <Post key={post._id} post={post}/>
+                    <Post key={post._id} post={post}/>
+                  </>
                 )
             })
            }

@@ -1,0 +1,178 @@
+section.create-post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    /* background: #001923; */
+
+}
+
+section.create-post::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(#ffeb3b, #e91e63);
+    border-radius: 50%;
+    transform: translate(-420px, -180px);
+
+}
+
+section.create-post::after {
+    content: '';
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(#2196f3, #83d8ff);
+    border-radius: 50%;
+    transform: translate(420px, 180px);
+
+}
+
+.create-post-container {
+    position: relative;
+    z-index: 1000;
+    width: 100%;
+    max-width: 1000px;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(150px);
+
+}
+
+.create-post-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -40%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+    transform: skew(-15deg);
+
+}
+
+.create-post-container h2 {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.create-post-container .row100 {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+}
+.create-post-container .row100 .col{
+    position: relative;
+    width: 100%;
+    padding: 0 10px;
+    margin: 30px 0 20px;
+}
+.create-post-container .row100 .col .inputBox {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    color: #fff;
+   
+}
+
+.create-post-container .row100 .col .inputBox input,
+.create-post-container .row100 .col .inputBox textarea {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    padding: 0 10px;
+    z-index: 1;
+    color: #000;
+}
+
+.create-post-container .row100 .col .inputBox .text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 40px;
+    font-size: 18px;
+    padding: 0 10px;
+    display: block;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.create-post-container .row100 .col .inputBox input:focus.text,
+.create-post-container .row100 .col .inputBox textarea:focus~.text,
+.create-post-container .row100 .col .inputBox textarea:valid~.text,
+ .create-post-container .row100 .col .inputBox input:valid~.text { 
+    top: -35px;
+    left: -10px;
+}
+
+.create-post-container .row100 .col .inputBox .line {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    transition: 0.5s;
+    border-radius: 2px;
+    pointer-events: none;
+
+
+}
+
+.create-post-container .row100 .col .inputBox input:valid~.line,
+.create-post-container .row100 .col .inputBox input:focus~.line,
+.create-post-container .row100 .col .inputBox textarea:focus~.line,
+.create-post-container .row100 .col .inputBox textarea:valid~.line {
+    height: 100%;
+}
+
+.create-post-container .row100 .col .inputBox.textarea {
+    position: relative;
+    overflow:auto;
+    width: 100%;
+     min-height: 300px; 
+         padding: 10px 0;
+}
+.create-post-container .row100 .col  input[type="submit"]{
+    border: none;
+    padding: 10px 40px;
+    cursor: pointer;
+    outline: none;
+    background: #fff;
+    color: #000;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 7px;
+    /* margin-top: 50px; */
+}
+.create-post-container .row100 .col  input[type="file"]{
+    border: none;
+    padding: 10px 40px;
+    cursor: pointer;
+    outline: none;
+    background: #fff;
+    color: #000;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 7px;
+    /* margin-top: 50px; */
+}

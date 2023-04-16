@@ -33,12 +33,15 @@ const Post = ({post}) => {
           <Link to={'/user'} className="author" state={{author_id:post.user_id,nickname:post.author_nickname}} >{post.author_nickname}</Link>
           <time>2023-03-03 08.00</time>
         </p>
-        <p className="summary">{post.summary}</p>
+        <p className="summary">{post.summary}
+        
         <Link to ={`/posts/${post._id}`} >See more ...</Link>
-      </div>
+        </p>
+
       {
         (post.user_id===deco._id)?<DeletePostButton _id ={post._id} />:''
       }
+      </div>
       
       
     </div>

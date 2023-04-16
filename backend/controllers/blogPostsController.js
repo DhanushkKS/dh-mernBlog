@@ -29,7 +29,7 @@ const getSinglePost = async (req, res) => {
         return res.status(404).json({ error: 'No post found' })
     }
     res.status(200).json(post)
-    console.log('single post request',req);
+    // console.log('single post request',req);
 }
 
 /** createPost */

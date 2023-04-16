@@ -80,12 +80,14 @@ const IndexPage = () =>{
   margin: 10px;
   background: linear-gradient(
     ${props => Math.floor(Math.random() * 361)}deg,
-    rgb(${props => Math.floor(Math.random() * 256)}, ${props => Math.floor(Math.random() * 256)}, ${props => Math.floor(Math.random() * 256)}),
-    rgb(${props => Math.floor(Math.random() * 256)}, ${props => Math.floor(Math.random() * 256)}, ${props => Math.floor(Math.random() * 256)})
+    rgb(${props => Math.floor(128+Math.random() * 128)}, ${props => Math.floor(128+Math.random() * 128)}, ${props => Math.floor(128+Math.random() * 128)}),
+    rgb(${props => Math.floor(128+Math.random() * 128)}, ${props => Math.floor(128+Math.random() * 128)}, ${props => Math.floor(128+Math.random() * 128)})
   );
  
   animation: ${props => props.animation } 30s linear infinite;
   animation-delay: ${props => `calc(-1s * ${props.index}))`};
+  box-shadow : 0px 0px 20px rgba(0,0,0,0.8); 
+  
 `;
     const BackgroundCircles = ({ count }) => {
   const animations = [];
@@ -115,9 +117,9 @@ const IndexPage = () =>{
   const circles = Array.from({ length: count }, (_, index) => (
     <BackgroundCircle key={index} index={index} animation={circls[index]} style={{
       
-        top: `${Math.floor(Math.random()*1000)}px`,
+        top: `${Math.floor(Math.random()*100)}px`,
         left:`${Math.floor(Math.random()*1440)}px`,
-        
+        opacity : `${0.1+Math.random()}`
     }} />
           
 

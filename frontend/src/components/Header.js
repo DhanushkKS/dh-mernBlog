@@ -25,7 +25,7 @@ const Header = () => {
   console.log("nickname,", user?.nickname);
   return (
     <header>
-      <Link to="/" className="logo">My Blog</Link>
+      <Link to="/" className="logo">DH-Blog</Link>
       <nav>
         <ul className="navigation active">
 
